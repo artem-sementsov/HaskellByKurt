@@ -28,22 +28,17 @@ names = [("Иэн","Кертис"),
          ("Билл","Хук"),
          ("Стивен","Моррис")]
 
-compareLastNames name1 name2 = if lastName1 > lastName2
-                               then GT
-                               else 
-                                 if lastName1 < lastName2
-                                 then LT
-                                 else
-                                   if firstName1 > firstName2
-                                   then GT
-                                   else
-                                   if firstName1 < firstName2
-                                   then LT
-                                   else EQ
-  where lastName1 = snd name1
-        lastName2 = snd name2
-        firstName1 = fst name1
-        firstName2 = fst name2
+compareLastNames name1 name2
+  | lastName1 > lastName2 = GT
+  | lastName1 < lastName2 = LT
+  | firstName1 > firstName2 = GT
+  | firstName1 < firstName2 = LT
+  | otherwise = EQ
+  where
+      lastName1 = snd name1
+      lastName2 = snd name2
+      firstName1 = fst name1
+      firstName2 = fst name2
 
 compareLastNames2 name1 name2 = if lastNameRes /= EQ
                                 then lastNameRes
@@ -87,6 +82,6 @@ getLocationFunction location =
     "sf" -> sfOffice
     "reno" -> renoOffice
     "col" -> colOffice
-    _ -> (\name -> (fst name) ++ " " ++ (snd name))
+    _ -> (\name -> fst name ++ " " ++ snd name)
 
 main = return ()
