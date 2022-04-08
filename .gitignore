@@ -3,5 +3,5 @@
 *.exe
 *.gz
 */dist-newstyle
-.hi
-.o
+*.hi
+*.o
